@@ -15,10 +15,6 @@
                     @endif
                         <a href="{{ route('home') }}">Visualizar Usuarios</a><br>
                         <a href="{{ route('sala') }}">Visualizar Salas</a><br>
-{{--                        {{ $data_consulta }}--}}
-{{--                        {{ $ArrayCalendario }}--}}
-                        <!-- <a href="#">Abrir Nova Sala</a><br>
-                        <a href="#">Abrir Novo Horário</a><br> -->
                 </div>
                 <div>
 

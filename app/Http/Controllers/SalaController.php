@@ -24,32 +24,31 @@ class SalaController extends Controller
 
     public function index()
     {
-        $salas = $this->salaService->retornaSalas();
-
-        //dd($salas);
+        $salas = $this->salaService->retornarSalas();
 
         return view ('sala/index', compact('salas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view ('sala/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required',
+            'status_id' => 'required'
+        ]);
+
+        $dados = $request->only(['nome','status_id']);
+
+            if(!$this->salaService->cadastraNovaSala($dados)){
+                return back()->withErrors(['Não foi possível criar, já existe uma sala com este nome: '.$dados['nome']]);;
+            }
+
+        return redirect('/sala')->with('status', 'Sala criada com sucesso');
     }
 
     /**

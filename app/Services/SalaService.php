@@ -13,8 +13,24 @@ class SalaService
         $this->salaRepository = $salaRepository;
     }
 
-    public function retornaSalas() : string
+    public function retornarSalas()
     {
         return $this->salaRepository->findAll();
+    }
+
+    public function cadastraNovaSala($dados)
+    {
+        if($this->validaNomeDaSala($dados['nome'])){
+            return false;
+        }
+        
+        $this->salaRepository->insert($dados);
+       
+        return true;
+    }
+
+    public function validaNomeDaSala($nome)
+    {
+       return $this->salaRepository->buscaSalaPeloNome($nome);
     }
 }
