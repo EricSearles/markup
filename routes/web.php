@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SalaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/sala', [SalaController::class, 'index'])->name('sala')->middleware('is_admin');
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+

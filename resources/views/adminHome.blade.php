@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard Admin') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,9 +13,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                        <a href="{{ route('home') }}">Visualizar Usuarios</a><br>
+                        <a href="{{ route('sala') }}">Visualizar Salas</a><br>
+{{--                        {{ $data_consulta }}--}}
+{{--                        {{ $ArrayCalendario }}--}}
+                        <!-- <a href="#">Abrir Nova Sala</a><br>
+                        <a href="#">Abrir Novo Horário</a><br> -->
+                </div>
+                <div>
 
-                    {{ __('You are logged in!') }}
-                        You are admin.
                 </div>
             </div>
         </div>
