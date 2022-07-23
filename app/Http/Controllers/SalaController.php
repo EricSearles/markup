@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Services\SalaService;
+use App\Models\Sala;
 
 use Illuminate\Http\Request;
 
 class SalaController extends Controller
 {
     private $salaService;
+    private $salaStatus = [];
 
     public function __construct(SalaService $salaService)
     {
@@ -70,7 +72,7 @@ class SalaController extends Controller
      */
     public function edit(Sala $sala)
     {
-        //
+        return view('sala.edit', compact('sala'));
     }
 
     /**
@@ -82,17 +84,23 @@ class SalaController extends Controller
      */
     public function update(Request $request, Sala $sala)
     {
-        //
+        $dados = $request->only(['id', 'nome','status_id']);
+
+            if($this->salaService->editaSala($dados)){
+                return back()->withErrors(['Não foi possível fazer esta alteração.']); 
+            };
+
+        return redirect('/sala')->with('status', 'Sala editada com sucesso.');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sala  $sala
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sala $sala)
+
+    public function destroy($id)
     {
-        //
+        if(!$this->salaService->deletaSala($id)){
+            return back()->withErrors(['Não foi possível excluir a sala.']);
+        };
+
+        return redirect('/sala')->with('status', 'Sala excluida com sucesso.');
     }
 }

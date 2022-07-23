@@ -29,6 +29,22 @@ class SalaService
         return true;
     }
 
+    public function buscaSala($id)
+    {
+        return $this->salaRepository->buscarSala($id);
+    }
+
+    public function editaSala($dados)
+    {
+        $id = $dados['id'];
+        $this->salaRepository->editarSala($dados, $id);
+    }
+
+    public function deletaSala($id)
+    {
+        $this->salaRepository->deletarSala($id);
+    }
+
     public function validaNomeDaSala($nome)
     {
        return $this->salaRepository->buscaSalaPeloNome($nome);
