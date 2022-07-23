@@ -52,6 +52,12 @@ class SalaController extends Controller
         return view('sala.show', compact('sala'));
     }
 
+    public function exibeAgenda()
+    {
+        $agendas = $this->salaService->retornaSalasComAgenda();
+        return view('sala.agenda', compact('agendas'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

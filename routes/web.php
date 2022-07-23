@@ -30,5 +30,8 @@ Route::get('/sala/{sala}/edit', [SalaController::class, 'edit'])->name('sala.edi
 Route::put('/sala-update', [SalaController::class, 'update'])->name('sala.update')->middleware('is_admin');
 Route::get('/deletar-sala/{id}', [SalaController::class, 'destroy'])->name('sala.deletar')->middleware('is_admin');
 Route::get('/sala/{sala}/show', [SalaController::class, 'show'])->name('sala.show')->middleware('is_admin');
+Route::get('/sala-agenda', [SalaController::class, 'exibeAgenda'])->name('sala.agenda')->middleware('is_admin');
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/agenda', [HomeController::class, 'index'])->name('agenda');
 

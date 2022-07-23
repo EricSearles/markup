@@ -3,19 +3,27 @@
 namespace App\Services;
 
 use App\Repositories\SalaRepository;
+use App\Services\AgendaService;
 
 class SalaService
 {
     private $salaRepository;
+    private $agendaService;
 
-    public function __construct(SalaRepository $salaRepository)
+    public function __construct(SalaRepository $salaRepository, AgendaService $agendaService)
     {
         $this->salaRepository = $salaRepository;
+        $this->agendaService = $agendaService;
     }
 
     public function retornarSalas()
     {
         return $this->salaRepository->findAll();
+    }
+
+    public function retornaSalasComAgenda()
+    {
+        return $this->agendaService->mostraAgenda();
     }
 
     public function cadastraNovaSala($dados)
