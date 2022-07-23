@@ -29,6 +29,11 @@ class SalaService
         return true;
     }
 
+    public function deletaSala($id)
+    {
+        $this->salaRepository->deletarSala($id);
+    }
+
     public function validaNomeDaSala($nome)
     {
        return $this->salaRepository->buscaSalaPeloNome($nome);
