@@ -34,7 +34,7 @@
                     <td>{{ $sala->nome }}</td>
                     <td>{{ $sala->status_id }}</td>
                     <td> 
-                        <a href="#"> Ver<i class="far fa-eye"> </i> </a>
+                        <a href="{{ route('sala.show',$sala) }}"> Ver<i class="far fa-eye"> </i> </a>
                         <a href="{{ route('sala.edit',$sala) }}"> Editar<i class="fas fa-pencil-alt"> </i> </a>
                         <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar<i class="far fa-trash-alt"></i> </a></td>
                     </tr>

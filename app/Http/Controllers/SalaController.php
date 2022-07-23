@@ -17,24 +17,17 @@ class SalaController extends Controller
         $this->salaService = $salaService;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
     public function index()
     {
         $salas = $this->salaService->retornarSalas();
 
-        return view ('sala/index', compact('salas'));
+        return view ('sala.index', compact('salas'));
     }
 
 
     public function create()
     {
-        return view ('sala/create');
+        return view ('sala.create');
     }
 
     public function store(Request $request)
@@ -53,15 +46,10 @@ class SalaController extends Controller
         return redirect('/sala')->with('status', 'Sala criada com sucesso');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sala  $sala
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Sala $sala)
     {
-        //
+        return view('sala.show', compact('sala'));
     }
 
     /**
