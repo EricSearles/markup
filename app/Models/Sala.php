@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Sala extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome', 'status_id'];
+    protected $fillable = ['id' ,'nome', 'status_id'];
 }

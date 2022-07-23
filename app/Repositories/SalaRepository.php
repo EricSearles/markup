@@ -15,6 +15,11 @@ class SalaRepository extends Repository implements RepositoryInterface
         return $this->findAll();
     }
 
+    public function buscarSala($id)
+    {
+        return $this->find($id);
+    }
+
     public function buscaSalaPeloNome($nome)
     {       
         $sala = Sala::where('nome',$nome)->get();
@@ -24,6 +29,11 @@ class SalaRepository extends Repository implements RepositoryInterface
             }
 
         return true;
+    }
+
+    public function editarSala($data, $id)
+    {
+        return $this->update($data, $id);
     }
 
     public function deletarSala($id)
