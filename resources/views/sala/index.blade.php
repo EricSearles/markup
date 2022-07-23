@@ -6,7 +6,8 @@
             <div class="mr-auto p-2">
                 <h2 class="display-5 titulo">Salas</h2>
                 <a href="{{ route('sala.criar') }}">Criar Nova Sala</a><br>
-                <a href="#">Criar Novo Horário</a><br>
+                <!-- <a href="#">Criar Novo Horário</a><br> -->
+                <a href="{{ route('admin.home') }}">Voltar</a><br>
                     @if (session('status'))
                                 <div class="alert alert-success">
                                     {{ session('status') }}
