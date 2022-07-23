@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SalaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/sala', [SalaController::class, 'index'])->name('sala')->middleware('is_admin');
+Route::get('/criar-sala', [SalaController::class, 'create'])->name('sala.criar')->middleware('is_admin');
+Route::post('/cadastrar-sala', [SalaController::class, 'store'])->name('sala.cadastrar')->middleware('is_admin');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
