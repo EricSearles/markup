@@ -36,7 +36,7 @@
                     <td> 
                         <a href="#"> Ver<i class="far fa-eye"> </i> </a>
                         <a href="#"> Editar<i class="fas fa-pencil-alt"> </i> </a>
-                        <a href="#"> Apagar<i class="far fa-trash-alt"></i> </a></td>
+                        <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar<i class="far fa-trash-alt"></i> </a></td>
                     </tr>
                 @endforeach
             </tbody>

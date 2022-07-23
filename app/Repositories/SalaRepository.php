@@ -25,5 +25,10 @@ class SalaRepository extends Repository implements RepositoryInterface
 
         return true;
     }
+
+    public function deletarSala($id)
+    {
+        return $this->delete($id);
+    }
 }
 

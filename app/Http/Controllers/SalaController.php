@@ -85,14 +85,13 @@ class SalaController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sala  $sala
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sala $sala)
+
+    public function destroy($id)
     {
-        //
+        if(!$this->salaService->deletaSala($id)){
+            return back()->withErrors(['Não foi possível excluir a sala.']);
+        };
+
+        return redirect('/sala')->with('status', 'Sala excluida com sucesso.');
     }
 }
