@@ -1,21 +1,48 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="col-md-12">
-        @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-        @endif
-            SALAS <br>
-            <br>
-            @foreach($salas as $sala)
-                ID: {{ $sala->id }} -
-                Nome Sala: {{ $sala->nome }} -
-                Status ID: {{ $sala->status_id }}<br>
-            @endforeach
-            <a href="{{ route('sala.criar') }}">Abrir Nova Sala</a><br>
-            <a href="#">Abrir Novo Horário</a><br>
+<div class="container">
+    <div class="list-group-item">
+        <div class="d-flex">
+            <div class="mr-auto p-2">
+                <h2 class="display-5 titulo">Salas</h2>
+                <a href="{{ route('sala.criar') }}">Criar Nova Sala</a><br>
+                <a href="#">Criar Novo Horário</a><br>
+                    @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                    @endif
+            </div>
         </div>
     </div>
-@endsection
+    <hr>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sala</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                </thead>
+            <tbody>
+                @foreach($salas as $sala)           
+                    <tr>
+                    <th scope="row">{{ $sala->id }}</th>
+                    <td>{{ $sala->nome }}</td>
+                    <td>{{ $sala->status_id }}</td>
+                    <td> 
+                        <a href="#"> Ver<i class="far fa-eye"> </i> </a>
+                        <a href="#"> Editar<i class="fas fa-pencil-alt"> </i> </a>
+                        <a href="#"> Apagar<i class="far fa-trash-alt"></i> </a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>    
+</div>
+@stop
+
+
