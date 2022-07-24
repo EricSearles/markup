@@ -25,7 +25,7 @@ class AgendaRepository extends Repository implements RepositoryInterface
                     'users.name' )
         ->where('salas.status_id',1)
         ->orderBy('sala')
-        ->get();
+        ->paginate(10);
     }
 
 }
