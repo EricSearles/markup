@@ -43,6 +43,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $salas->links() }}
     </div>    
 </div>
 @stop

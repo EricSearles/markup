@@ -15,6 +15,11 @@ class SalaRepository extends Repository implements RepositoryInterface
         return $this->findAll();
     }
 
+    public function retornarSalasComPaginacao($paginas) 
+    {
+        return $this->returnAllPagination($paginas);
+    }
+
     public function buscarSala($id)
     {
         return $this->find($id);

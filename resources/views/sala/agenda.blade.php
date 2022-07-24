@@ -8,9 +8,9 @@
                 <a href="{{ route('sala') }}">Voltar</a><br>
                 <a href="{{ route('admin.home') }}">Início</a><br>
                     @if (session('status'))
-                                <div class="alert alert-success">
-                                    {{ session('status') }}
-                                </div>
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
                     @endif
             </div>
         </div>

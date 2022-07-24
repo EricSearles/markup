@@ -14,11 +14,13 @@ class SalaController extends Controller
     public function __construct(SalaService $salaService)
     {
         $this->salaService = $salaService;
+        
     }
 
     public function index()
     {
-        $salas = $this->salaService->retornarSalas();
+        $registrosPorPagina = 10;
+        $salas = $this->salaService->retornarSalas($registrosPorPagina);
 
         return view ('sala.index', compact('salas'));
     }
