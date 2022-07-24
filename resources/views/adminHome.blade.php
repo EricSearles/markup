@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <a href="{{ route('home') }}">Visualizar Usuarios</a><br>
+                        <a href="{{ route('sala.agenda') }}">Ver agenda</a><br>
                         <a href="{{ route('sala') }}">Visualizar Salas</a><br>
                 </div>
                 <div>

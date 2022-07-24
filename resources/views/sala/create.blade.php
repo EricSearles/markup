@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<div class="content p-1">
+<div class="container">
     <div class="list-group-item">
         <div class="d-flex">
             <div class="mr-auto p-2">
                 <h2 class="display-5 titulo">Cadastrar Sala</h2>
+                <a href="{{ route('sala') }}">Voltar</a><br>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
