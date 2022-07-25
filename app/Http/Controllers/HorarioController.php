@@ -4,82 +4,47 @@ namespace App\Http\Controllers;
 
 use App\Models\Horario;
 use Illuminate\Http\Request;
+use App\Services\HorarioService;
 
 class HorarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    private $horarioService;
+
+    public function __construct(HorarioService $horarioService)
+    {
+        $this->horarioService = $horarioService;    
+    }
+
+    
     public function index()
     {
-        //
+        $horariosCadastrados = $this->horarioService->retornaHorariosCadastrados();
+        return view('horario.index', compact('horariosCadastrados'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('horario.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $dados = $request->only('inicio');
+        $this->horarioService->cadastraNovoHorario($dados);
+        
+        return redirect('/horario')->with('status', 'Horário Criado.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Horario  $horario
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Horario $horario)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Horario  $horario
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Horario $horario)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Horario  $horario
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Horario $horario)
+    public function destroy($id)
     {
-        //
-    }
+        if(!$this->horarioService->deletaHorario($id)){
+            return back()->withErrors(['Não foi possível excluir este horário.']);
+        };
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Horario  $horario
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Horario $horario)
-    {
-        //
+        return redirect('/sala')->with('status', 'Horário excluido com sucesso.');
     }
 }
