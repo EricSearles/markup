@@ -13,8 +13,23 @@ class AgendaService
         $this->agendaRepository = $agendaRepository;
     }
 
-    public function mostraAgenda()
+    public function mostraAgendaAdmin()
     {
-        return $this->agendaRepository->mostrarAgenda();
+        return $this->agendaRepository->mostrarAgendaAdmin();
+    }
+
+    public function mostraAgendaFuncionario()
+    {
+        return $this->agendaRepository->mostrarAgendaFuncionario();
+    }
+
+    public function agendaHorario(int $agenda_id, int $user_id)
+    {
+        return $this->agendaRepository->agendarHorario($agenda_id, $user_id);
+    }
+
+    public function cancelaHorario(int $agenda_id, int $user_id)
+    {
+        return $this->agendaRepository->cancelarHorario($agenda_id, $user_id);
     }
 }

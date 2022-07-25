@@ -1,9 +1,11 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SalaController;
+use App\Http\Controllers\AgendaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +37,6 @@ Route::get('/sala-agenda', [SalaController::class, 'exibeAgenda'])->name('sala.a
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/agenda', [HomeController::class, 'index'])->name('agenda');
 
+Route::get('/funcionario-agenda', [HomeController::class, 'exibeAgendaFuncionario'])->name('agenda.funcionario');
+Route::get('/agendar/{agenda_id}/{user_id}', [AgendaController::class, 'agendar'])->name('agendar');
+Route::get('/cancelar/{agenda_id}/{user_id}', [AgendaController::class, 'cancelar'])->name('cancelar');
