@@ -24,7 +24,7 @@ class SalaService
 
     public function retornaSalasComAgenda()
     {
-        return $this->agendaService->mostraAgenda();
+        return $this->agendaService->mostraAgendaAdmin();
     }
 
     public function cadastraNovaSala($dados)
