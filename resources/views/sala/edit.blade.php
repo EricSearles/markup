@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<div class="content p-1">
+<div class="container">
     <div class="list-group-item">
         <div class="d-flex">
             <div class="mr-auto p-2">
                 <h2 class="display-5 titulo">Alterar Dados Sala</h2>
+                <a href="{{ route('sala') }}">Voltar</a>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -20,7 +21,7 @@
     <hr>
         <form action={{ route('sala.update', $sala) }} method="POST" enctype="multipart/form-data">
             @csrf
-            @method('put');
+            @method('put')
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label> Sala </label>
@@ -37,8 +38,7 @@
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $sala->id }}">
-            <button type="submit" class="btn btn-primary">Editar</button>
-            <a href="{{ route('sala') }}">Voltar</a>
+            <button type="submit" class="btn btn-primary mt-2">Editar</button>
         </form>
 
 </div>

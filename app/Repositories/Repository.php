@@ -19,6 +19,11 @@ class Repository implements RepositoryInterface
         return app($this->modelClass)->all();
     }
 
+    public function returnAllPagination($paginas = null)
+    {
+        return app($this->modelClass)->paginate($paginas);
+    }
+
     public function insert(array $data)
     {
         return app($this->modelClass)->create($data);

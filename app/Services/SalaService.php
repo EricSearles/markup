@@ -16,14 +16,15 @@ class SalaService
         $this->agendaService = $agendaService;
     }
 
-    public function retornarSalas()
+    public function retornarSalas($paginas)
     {
-        return $this->salaRepository->findAll();
+        //return $this->salaRepository->findAll();
+        return $this->salaRepository->retornarSalasComPaginacao($paginas);
     }
 
     public function retornaSalasComAgenda()
     {
-        return $this->agendaService->mostraAgenda();
+        return $this->agendaService->mostraAgendaAdmin();
     }
 
     public function cadastraNovaSala($dados)

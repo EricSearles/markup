@@ -5,7 +5,7 @@
         <div class="d-flex">
             <div class="mr-auto p-2">
                 <h2 class="display-5 titulo">Visualizando {{ $sala->nome }}</h2>
-                <a href="{{ route('sala.criar') }}">Criar Nova Sala</a><br>
+                <!-- <a href="{{ route('sala.criar') }}">Criar Nova Sala</a><br> -->
                 <a href="{{ route('sala.agenda') }}">Ver agenda</a><br>
                 <a href="#">Criar Novo Horário</a><br>
                 <a href="{{ route('sala') }}">Voltar</a><br>

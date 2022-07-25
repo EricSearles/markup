@@ -4,9 +4,8 @@
     <div class="list-group-item">
         <div class="d-flex">
             <div class="mr-auto p-2">
-                <h2 class="display-5 titulo">Salas</h2>
-                <a href="{{ route('sala.criar') }}">Criar Nova Sala</a> |
-                <a href="{{ route('sala.agenda') }}">Ver agenda</a> |
+                <h2 class="display-5 titulo">Horarios</h2>
+                <a href="{{ route('horario.criar') }}">Criar Novo Horário</a> |
                 <a href="{{ route('admin.home') }}">Voltar</a><br>
                     @if (session('status'))
                                 <div class="alert alert-success">
@@ -23,26 +22,24 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Sala</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Início</th>
+                    <th scope="col">Término</th>
                     <th scope="col">Ações</th>
                 </tr>
                 </thead>
             <tbody>
-                @foreach($salas as $sala)
+                @foreach($horariosCadastrados as $horario)
                     <tr>
-                    <th scope="row">{{ $sala->id }}</th>
-                    <td>{{ $sala->nome }}</td>
-                    <td>{{ $sala->status_id }}</td>
+                    <th scope="row">{{ $horario->id }}</th>
+                    <td>{{ $horario->inicio }}</td>
+                    <td>{{ $horario->termino }}</td>
                     <td>
-                        <a href="{{ route('sala.show',$sala) }}"> Ver <i class="far fa-eye"> </i> </a>
-                        <a href="{{ route('sala.edit',$sala) }}"> Editar <i class="fas fa-pencil-alt"> </i> </a>
-                        <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar <i class="far fa-trash-alt"></i> </a></td>
+                        <a href="{{ route('horario.deletar', $horario->id)}}"> Apagar <i class="far fa-trash-alt"></i> </a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        {{ $salas->links() }}
+
     </div>
 </div>
 @stop

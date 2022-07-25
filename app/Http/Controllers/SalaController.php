@@ -10,16 +10,17 @@ use Illuminate\Http\Request;
 class SalaController extends Controller
 {
     private $salaService;
-    private $salaStatus = [];
 
     public function __construct(SalaService $salaService)
     {
         $this->salaService = $salaService;
+        
     }
 
     public function index()
     {
-        $salas = $this->salaService->retornarSalas();
+        $registrosPorPagina = 10;
+        $salas = $this->salaService->retornarSalas($registrosPorPagina);
 
         return view ('sala.index', compact('salas'));
     }
@@ -58,24 +59,13 @@ class SalaController extends Controller
         return view('sala.agenda', compact('agendas'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Sala  $sala
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Sala $sala)
     {
         return view('sala.edit', compact('sala'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sala  $sala
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Sala $sala)
     {
         $dados = $request->only(['id', 'nome','status_id']);

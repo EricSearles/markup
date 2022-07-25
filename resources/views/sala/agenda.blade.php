@@ -5,13 +5,12 @@
         <div class="d-flex">
             <div class="mr-auto p-2">
                 <h2 class="display-5 titulo">Agenda</h2>
-                <!-- <a href="{{ route('sala.criar') }}">Criar Nova Sala</a><br>
-                <a href="#">Criar Novo Horário</a><br> -->
+                <a href="{{ route('admin.home') }}">Início</a> |
                 <a href="{{ route('sala') }}">Voltar</a><br>
                     @if (session('status'))
-                                <div class="alert alert-success">
-                                    {{ session('status') }}
-                                </div>
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
                     @endif
             </div>
         </div>
@@ -30,20 +29,22 @@
                     <th scope="col">Responsável</th>
                 </tr>
                 </thead>
-            <tbody>       
-                @foreach($agendas as $agenda) 
+            <tbody>
+                @foreach($agendas as $agenda)
                     <tr>
                     <th scope="row">{{ $agenda->data }}</th>
                     <td>{{ $agenda->sala }}</td>
                     <td>{{ $agenda->inicio }}</td>
-                    <td>{{ $agenda->termino }}</td>                   
+                    <td>{{ $agenda->termino }}</td>
                     <td>{{ $agenda->status }}</td>
                     <td>{{ $agenda->name }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>    
+
+    </div>
+    {{ $agendas->links() }}
 </div>
 @stop
 
