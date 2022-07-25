@@ -5,9 +5,8 @@
         <div class="d-flex">
             <div class="mr-auto p-2">
                 <h2 class="display-5 titulo">Salas</h2>
-                <a href="{{ route('sala.criar') }}">Criar Nova Sala</a><br>
-                <a href="{{ route('sala.agenda') }}">Ver agenda</a><br>
-                <!-- <a href="#">Criar Novo Horário</a><br> -->
+                <a href="{{ route('sala.criar') }}">Criar Nova Sala</a> |
+                <a href="{{ route('sala.agenda') }}">Ver agenda</a> |
                 <a href="{{ route('admin.home') }}">Voltar</a><br>
                     @if (session('status'))
                                 <div class="alert alert-success">
@@ -30,21 +29,21 @@
                 </tr>
                 </thead>
             <tbody>
-                @foreach($salas as $sala)           
+                @foreach($salas as $sala)
                     <tr>
                     <th scope="row">{{ $sala->id }}</th>
                     <td>{{ $sala->nome }}</td>
                     <td>{{ $sala->status_id }}</td>
-                    <td> 
-                        <a href="{{ route('sala.show',$sala) }}"> Ver<i class="far fa-eye"> </i> </a>
-                        <a href="{{ route('sala.edit',$sala) }}"> Editar<i class="fas fa-pencil-alt"> </i> </a>
-                        <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar<i class="far fa-trash-alt"></i> </a></td>
+                    <td>
+                        <a href="{{ route('sala.show',$sala) }}"> Ver <i class="far fa-eye"> </i> </a>
+                        <a href="{{ route('sala.edit',$sala) }}"> Editar <i class="fas fa-pencil-alt"> </i> </a>
+                        <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar <i class="far fa-trash-alt"></i> </a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         {{ $salas->links() }}
-    </div>    
+    </div>
 </div>
 @stop
 
