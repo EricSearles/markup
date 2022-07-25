@@ -3,10 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Services\AgendaService;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
+
+    public $agendaService;
+
+    public function __construct(AgendaService $agendaService)
+    {
+        $this->agendaService = $agendaService;
+    }
+
+    public function alteraData($dia)
+    {
+        $this->adicionaDiaCalendario($dia);
+    }
+
+    public function agendar(int $agenda_id, int $user_id)
+    {
+        if(!$this->agendaService->agendaHorario($agenda_id, $user_id)){
+            return back()->withErrors(['Não foi possível agendar este horário.']);
+        };
+
+        return redirect('/funcionario-agenda')->with('status', 'Horário Agendado.');
+
+    }
+
+    public function cancelar(int $agenda_id, int $user_id)
+    {
+        if(!$this->agendaService->cancelaHorario($agenda_id, $user_id)){
+            return back()->withErrors(['Não foi possível fazer esta alteração.']);
+        };
+
+        return redirect('/funcionario-agenda')->with('status', 'Horário Cancelado!');
+    }
     /**
      * Display a listing of the resource.
      *

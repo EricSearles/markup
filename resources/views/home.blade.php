@@ -14,8 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
-                        You are normal user.
+                    <a href="{{ route('agenda.funcionario') }}">Ver agenda</a><br>
                 </div>
             </div>
         </div>
