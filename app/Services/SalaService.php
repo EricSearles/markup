@@ -27,6 +27,11 @@ class SalaService
         return $this->agendaService->mostraAgendaAdmin();
     }
 
+    public function retornaAgendaPorSala($id)
+    {
+        return $this->agendaService->mostraAgendaPorSala($id);
+    }
+
     public function cadastraNovaSala($dados)
     {
         if($this->validaNomeDaSala($dados['nome'])){
@@ -42,6 +47,8 @@ class SalaService
     {
         return $this->salaRepository->buscarSala($id);
     }
+
+
 
     public function editaSala($dados)
     {

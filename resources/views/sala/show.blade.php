@@ -28,63 +28,25 @@
                     <th scope="col">Termino</th>
                     <th scope="col">Status</th>
                     <th scope="col">Responsável</th>
-                    <th scope="col">Ações</th>
                 </tr>
-                </thead>
-            <tbody>        
+            </thead>
+
+                <tbody>     
+                    @foreach($dadosSala as $dados)   
                     <tr>
-                    <th scope="row">23/07/2022</th>
-                    <td>1</td>
-                    <td>10:00</td>
-                    <td>11:00</td>
-                    @if($sala->status_id != 6)
-                    <td>Reservado {{ $sala->status_id }}</td>
-                    <td>Responsável</td>
-                    @endif
-                    <td> 
-                        <!-- <a href="#"> Ver<i class="far fa-eye"> </i> </a> -->
-                        <a href="{{ route('sala.edit',$sala) }}"> Editar<i class="fas fa-pencil-alt"> </i> </a>
-                        <!-- <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar<i class="far fa-trash-alt"></i> </a> -->
-                    </td>
-                    <tr>
-                    <th scope="row">23/07/2022</th>
-                    <td>2</td>
-                    <td>11:00</td>
-                    <td>12:00</td>
-                    <td>Livre</td>
-                    <td>Responsável</td>
-                    <td> 
-                        <!-- <a href="#"> Ver<i class="far fa-eye"> </i> </a> -->
-                        <a href="{{ route('sala.edit',$sala) }}"> Editar<i class="fas fa-pencil-alt"> </i> </a>
-                        <!-- <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar<i class="far fa-trash-alt"></i> </a> -->
-                    </td>
-                    <tr>
-                    <th scope="row">23/07/2022</th>
-                    <td>3</td>
-                    <td>13:00</td>
-                    <td>14:00</td>
-                    <td>Livre</td>
-                    <td>Responsável</td>
-                    <td> 
-                        <!-- <a href="#"> Ver<i class="far fa-eye"> </i> </a> -->
-                        <a href="{{ route('sala.edit',$sala) }}"> Editar<i class="fas fa-pencil-alt"> </i> </a>
-                        <!-- <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar<i class="far fa-trash-alt"></i> </a> -->
-                    </td>
-                    <tr>
-                    <th scope="row">23/07/2022</th>
-                    <td>4</td>
-                    <td>13:00</td>
-                    <td>14:00</td>
-                    <td>Livre</td>
-                    <td>Responsável</td>
-                    <td> 
-                        <!-- <a href="#"> Ver<i class="far fa-eye"> </i> </a> -->
-                        <a href="{{ route('sala.edit',$sala) }}"> Editar<i class="fas fa-pencil-alt"> </i> </a>
-                        <!-- <a href="{{ route('sala.deletar',$sala->id) }}"> Apagar<i class="far fa-trash-alt"></i> </a> -->
-                    </td>
+                        <th scope="row">{{ $dados->data }}</th>
+                        <td>100</td>
+                        <td>{{ $dados->inicio }}</td>
+                        <td>{{ $dados->termino }}</td>
+                        @if($sala->status_id != 6)
+                        <td>{{ $dados->status }}</td>
+                        <td>{{ $dados->name }}</td>
+                        @endif
                     </tr>
-            </tbody>
+                    @endforeach
+                </tbody>
         </table>
+        <h4><a href="{{ route('sala.edit',$sala) }}"> Desativar Sala<i class="fas fa-pencil-alt"> </i> </a></h4>
     </div>    
 </div>
 @stop

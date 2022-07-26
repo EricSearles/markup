@@ -62,7 +62,8 @@ class SalaController extends Controller
 
     public function show(Sala $sala)
     {
-        return view('sala.show', compact('sala'));
+        $dadosSala = $this->salaService->retornaAgendaPorSala($sala->id);
+        return view('sala.show', compact('sala', 'dadosSala'));
     }
 
     public function exibeAgenda()
