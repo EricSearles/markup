@@ -52,6 +52,11 @@ class AgendaRepository extends Repository implements RepositoryInterface
             ->paginate(10);
     }
 
+    public function criarHorarioNaAgenda($data)
+    {
+        return $this->insert($data);
+    } 
+
     public function agendarHorario(int $agenda_id, int $user_id)
     {
 
