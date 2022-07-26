@@ -52,6 +52,30 @@ class AgendaRepository extends Repository implements RepositoryInterface
             ->paginate(10);
     }
 
+    public function mostrarAgendaPorSala($id)
+    {
+        return  DB::table('agendas')
+        ->join('salas', 'agendas.sala_id', '=', 'salas.id')
+        ->join('horarios', 'agendas.horario_id', '=', 'horarios.id')
+        ->join('status', 'agendas.status_id', '=', 'status.id')
+        ->leftJoin('users', 'agendas.user_id', '=', 'users.id')
+        ->select(   'salas.id','salas.nome as sala',
+            'agendas.id as agenda_id',
+            'agendas.data as data',
+            'horarios.inicio',
+            'horarios.termino',
+            'status.id as status_id',
+            'status.nome as status',
+            'users.id as user_id',
+            'users.name')
+        ->where('salas.id', $id)
+        ->orderBy('agendas.data')
+        ->orderBy('sala')
+        ->orderBy('horarios.inicio')
+        ->get();
+        //->paginate(10);
+    }
+
     public function criarHorarioNaAgenda($data)
     {
         return $this->insert($data);

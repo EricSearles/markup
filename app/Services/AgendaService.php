@@ -27,6 +27,11 @@ class AgendaService
         return $this->agendaRepository->mostrarAgendaFuncionario();
     }
 
+    public function mostraAgendaPorSala($id)
+    {
+        return $this->agendaRepository->mostrarAgendaPorSala($id);
+    }
+
     public function criaHorarioAgenda($dados)
     {
         return $this->agendaRepository->criarHorarioNaAgenda($dados);
