@@ -31,6 +31,12 @@ class SalaController extends Controller
         return view ('sala.create');
     }
 
+    public function createHorario($id)
+    {
+        $sala_id = $id;
+        return view ('sala.createHorario', compact('sala_id'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -45,6 +51,12 @@ class SalaController extends Controller
             }
 
         return redirect('/sala')->with('status', 'Sala criada com sucesso');
+    }
+
+    public function storeHorario(Request $request)
+    {
+        $dados = $request->only(['horario', 'sala_id']);
+        var_dump($dados);die;
     }
 
 
