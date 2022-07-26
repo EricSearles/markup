@@ -36,13 +36,18 @@ Route::get('/sala/{sala}/show', [SalaController::class, 'show'])->name('sala.sho
 Route::get('/sala-agenda', [SalaController::class, 'exibeAgenda'])->name('sala.agenda')->middleware('is_admin');
 Route::get('/sala-criar-horario/{sala}', [SalaController::class, 'createHorario'])->name('sala.criar.horario')->middleware('is_admin');
 Route::post('/sala-cadastrar-horario', [SalaController::class, 'storeHorario'])->name('sala.cadastrar.horario')->middleware('is_admin');
+
 Route::get('/horario', [HorarioController::class, 'index'])->name('horario')->middleware('is_admin');
 Route::get('/horario-criar', [HorarioController::class, 'create'])->name('horario.criar')->middleware('is_admin');
 Route::post('/horario-cadastrar', [HorarioController::class, 'store'])->name('horario.cadastrar')->middleware('is_admin');
 Route::get('/horario-deletar/{id}', [HorarioController::class, 'destroy'])->name('horario.deletar')->middleware('is_admin');
 
+Route::get('/agenda-criar/{sala}', [AgendaController::class, 'create'])->name('agenda.criar')->middleware('is_admin');
+Route::post('/agenda-cadastrar', [AgendaController::class, 'store'])->name('agenda.cadastrar')->middleware('is_admin');
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/agenda', [HomeController::class, 'index'])->name('agenda');
+
 
 Route::get('/funcionario-agenda', [HomeController::class, 'exibeAgendaFuncionario'])->name('agenda.funcionario');
 Route::get('/agendar/{agenda_id}/{user_id}', [AgendaController::class, 'agendar'])->name('agendar');

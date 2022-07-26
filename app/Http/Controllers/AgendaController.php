@@ -54,9 +54,11 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($dados)
     {
-        //
+        $sala = $dados;
+        $horarios = $this->agendaService->buscaHorariosCadastrados();
+        return view('agenda/create-agenda-admin', compact('sala', 'horarios'));
     }
 
     /**
@@ -67,7 +69,13 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->only('sala_id','horario_id','data','status_id');
+        if(!$this->agendaService->criaHorarioAgenda($dados)){
+            return back()->withErrors(['Não foi possível criar este horário.']); 
+        }
+
+        return redirect('/sala/agenda')->with('status', 'Horário criado com sucesso.');
+        
     }
 
     /**

@@ -31,7 +31,7 @@
             <p>
                 <span class="text-danger">* </span>Campo obrigatório
             </p>
-            <input type="hidden"  name="sala_id" value="{{ $sala_id }}">
+            <input type="hidden"  name="sala_id" value="{{ $sala }}">
             <button type="submit" class="btn btn-primary">Criar</button>
         </form>
 
